@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Header Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .content {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Add a little margin to the content to make space for the fixed header */
+        .content {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is the main content of the website.</p>
+        <!-- Add more content here -->
+    </div>
+    
+    <!-- Add more sections and content as needed -->
+
+    <script>
+        window.onscroll = function() {
+            // Check if the user has scrolled down past a certain point
+            if (window.pageYOffset > 100) {
+                // If they have, change the background color of the header
+                document.querySelector('header').style.backgroundColor = '#555';
+            } else {
+                // If not, revert it to the original color
+                document.querySelector('header').style.backgroundColor = '#333';
+            }
+        };
+    </script>
+</body>
+</html>
