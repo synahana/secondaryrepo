@@ -1,103 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky Header Example</title>
+    <title>Simple Calculator</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: background-color 0.3s;
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        header a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        header ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .content {
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        /* Add a little margin to the content to make space for the fixed header */
-        .content {
-            margin-top: 70px;
-        }
-
-        /* Style the call-to-action button */
-        .cta-button {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            text-transform: uppercase;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
+            background-color: #f2f2f2;
         }
 
-        .cta-button:hover {
-            background-color: #555;
+        input[type="text"] {
+            width: 100%;
+            font-size: 24px;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        button {
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="content">
-        <h1>Welcome to My Stylish Website</h1>
-        <p>This is the main content of the website.</p>
-        <a class="cta-button" href="#">Learn More</a>
-        <!-- Add more content here -->
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('+')">+</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('*')">*</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToDisplay('/')">/</button>
     </div>
-    
-    <!-- Add more sections and content as needed -->
 
     <script>
-        window.onscroll = function() {
-            // Check if the user has scrolled down past a certain point
-            if (window.pageYOffset > 100) {
-                // If they have, change the background color of the header
-                document.querySelector('header').style.backgroundColor = '#555';
-            } else {
-                // If not, revert it to the original color
-                document.querySelector('header').style.backgroundColor = '#333';
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
             }
-        };
+        }
     </script>
 </body>
 </html>
